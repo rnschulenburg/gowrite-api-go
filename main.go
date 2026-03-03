@@ -47,9 +47,11 @@ func main() {
 }
 
 func setEnvironment() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		return
+	if os.Getenv("ENV") != "production" {
+		err := godotenv.Load(".env")
+		if err != nil {
+			return
+		}
 	}
 }
 
