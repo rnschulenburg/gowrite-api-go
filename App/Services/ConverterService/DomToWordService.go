@@ -63,17 +63,31 @@ func createDocx(filename string, htmlInput string) error {
 	stylesXML := `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
 
-  <!-- ================= NORMAL (ProseMirror) ================= -->
+  <!-- ================= GLOBAL DEFAULTS ================= -->
+  <w:docDefaults>
+
+    <!-- Default Run Properties (Schrift global) -->
+    <w:rPrDefault>
+      <w:rPr>
+        <w:rFonts w:ascii="Courier New" w:hAnsi="Courier New"/>
+        <w:sz w:val="24"/>              <!-- 12pt (24 half-points) -->
+        <w:spacing w:val="3"/>          <!-- letter-spacing -->
+      </w:rPr>
+    </w:rPrDefault>
+
+    <!-- Default Paragraph Properties -->
+    <w:pPrDefault>
+      <w:pPr>
+        <w:spacing w:line="360" w:lineRule="auto"/> <!-- 1.6 line-height -->
+      </w:pPr>
+    </w:pPrDefault>
+
+  </w:docDefaults>
+
+  <!-- ================= NORMAL ================= -->
   <w:style w:type="paragraph" w:default="1" w:styleId="Normal">
     <w:name w:val="Normal"/>
-    <w:rPr>
-      <w:rFonts w:ascii="Courier New" w:hAnsi="Courier New"/>
-      <w:sz w:val="24"/>            <!-- 12pt -->
-      <w:spacing w:line="480" w:lineRule="auto"/> <!-- 1.6 line-height -->
-    </w:rPr>
-    <w:pPr>
-      <w:spacing w:after="120"/>    <!-- margin-bottom -->
-    </w:pPr>
+    <w:qFormat/>
   </w:style>
 
   <!-- ================= H1 ================= -->
@@ -82,7 +96,7 @@ func createDocx(filename string, htmlInput string) error {
     <w:basedOn w:val="Normal"/>
     <w:rPr>
       <w:rFonts w:ascii="Segoe UI" w:hAnsi="Segoe UI"/>
-      <w:sz w:val="28"/> <!-- 14pt -->
+      <w:sz w:val="28"/>  <!-- 14pt -->
     </w:rPr>
   </w:style>
 
@@ -92,8 +106,8 @@ func createDocx(filename string, htmlInput string) error {
     <w:basedOn w:val="Normal"/>
     <w:rPr>
       <w:rFonts w:ascii="Segoe UI" w:hAnsi="Segoe UI"/>
-      <w:sz w:val="26"/> <!-- 13pt -->
-      <w:color w:val="0000FF"/> <!-- blue -->
+      <w:sz w:val="26"/>
+      <w:color w:val="0000FF"/>
     </w:rPr>
   </w:style>
 
@@ -103,7 +117,7 @@ func createDocx(filename string, htmlInput string) error {
     <w:basedOn w:val="Normal"/>
     <w:rPr>
       <w:rFonts w:ascii="Segoe UI" w:hAnsi="Segoe UI"/>
-      <w:sz w:val="24"/> <!-- 12pt -->
+      <w:sz w:val="24"/>
       <w:i/>
       <w:color w:val="F8339E"/>
     </w:rPr>
@@ -115,19 +129,9 @@ func createDocx(filename string, htmlInput string) error {
     <w:basedOn w:val="Normal"/>
     <w:rPr>
       <w:rFonts w:ascii="Segoe UI" w:hAnsi="Segoe UI"/>
-      <w:sz w:val="22"/> <!-- 11pt -->
+      <w:sz w:val="22"/>
       <w:i/>
       <w:color w:val="909096"/>
-    </w:rPr>
-  </w:style>
-
-  <!-- ================= Highlight Span ================= -->
-  <w:style w:type="character" w:styleId="CommentStyle">
-    <w:name w:val="CommentStyle"/>
-    <w:rPr>
-      <w:highlight w:val="yellow"/>
-      <w:color w:val="FF8000"/>
-      <w:i/>
     </w:rPr>
   </w:style>
 
