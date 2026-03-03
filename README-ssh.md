@@ -5,6 +5,9 @@
   $ sudo chown root:root /etc/gowrite-api-go.env
   $ sudo chmod 600 /etc/gowrite-api-go.env
 
+- *Error Logs auf Server anschauen    
+  $ sudo journalctl -u gowrite-api-go -n 50 --no-pager    
+
 - *Führe auf dem Host (Server) aus:*  
   $ **sudo systemctl status ssh**
 

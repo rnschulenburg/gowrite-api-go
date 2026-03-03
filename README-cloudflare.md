@@ -3,10 +3,17 @@
 - cloudflared tunnel route dns schulenburg-office-tunnel jen1.schulenburg-office.com
 - cloudflared tunnel route dns schulenburg-office-tunnel ssh1.schulenburg-office.com
 - cloudflared tunnel route dns schulenburg-office-tunnel pga1.schulenburg-office.com
+- 
+- cloudflared tunnel route dns schulenburg-office-tunnel scriptory.club
+- cloudflared tunnel route dns schulenburg-office-tunnel api.scriptory.club
+- cloudflared tunnel route dns schulenburg-office-tunnel service.scriptory.club
 #### und jeweils
 - $ nano /etc/cloudflared/config.yml    
   `- hostname: api1.schulenburg-office.com`    
   `service: http://localhost:8080`
+
+#### cloudflare starten    
+  $ sudo cloudflared --config /etc/cloudflared/config.yml tunnel run    
 
 ### SSH & Cloudflare
 - Gehe zu https://dash.cloudflare.com und wähle deine Domain aus.   
