@@ -1,0 +1,9 @@
+.env
+.env-local
+.env-prod
+gowrite-api-go
+README-cloudflare.md
+README-jenkins.md
+README-postgre.md
+README-ssh.md
+README-jenkins-github.md
