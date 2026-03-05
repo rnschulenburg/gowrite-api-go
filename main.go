@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/joho/godotenv"
 	"github.com/rnschulenburg/gowrite-api-go/App/Services/AiService"
+	"github.com/rnschulenburg/gowrite-api-go/App/Services/ConverterService"
 	"github.com/rnschulenburg/gowrite-api-go/Core/Ws"
 	"github.com/rnschulenburg/gowrite-api-go/Package/DbConnection"
 	"github.com/rnschulenburg/gowrite-api-go/routers"
@@ -15,7 +16,10 @@ import (
 func main() {
 
 	setEnvironment()
-	auth.InitAuth()
+	err := ConverterService.InitFonts()
+	if err != nil {
+		log.Fatal(err)
+	}
 	AiService.InitAi()
 	DbConnection.InitDB()
 

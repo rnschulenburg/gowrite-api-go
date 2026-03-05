@@ -21,7 +21,8 @@ func CreatePdfDocument(
 	}
 
 	pdf := fpdf.New("P", "mm", "A4", "")
-	pdf.SetFontLocation("Resources/fonts")
+	//pdf.SetFontLocation("Resources/fonts")
+	pdf.SetFontLocation(FontDir)
 
 	// Word uses 2.54cm margins
 	pdf.SetMargins(25.4, 25.4, 25.4)
