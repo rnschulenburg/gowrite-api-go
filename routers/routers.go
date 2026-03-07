@@ -27,5 +27,8 @@ func InitRoutes() *mux.Router {
 
 	auth.Handler("/api/v1/ask", router, AiController.Ask, "POST", "")
 	auth.Handler("/api/v1/export-document/{projectName}", router, ExportDocumentController.Handle, "POST", "")
+
+	auth.Handler("/api/v1/import-document", router, ExportDocumentController.ImportWord, "POST", "")
+
 	return router
 }

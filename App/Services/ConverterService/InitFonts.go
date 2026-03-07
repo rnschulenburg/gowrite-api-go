@@ -17,9 +17,12 @@ func InitFonts() error {
 	log.Println("InitFonts start")
 
 	// immer neu erstellen (fonts sind klein)
-	os.RemoveAll(FontDir)
+	err := os.RemoveAll(FontDir)
+	if err != nil {
+		return err
+	}
 
-	err := os.MkdirAll(FontDir, 0755)
+	err = os.MkdirAll(FontDir, 0755)
 	if err != nil {
 		return err
 	}
@@ -37,7 +40,7 @@ func InitFonts() error {
 
 		target := filepath.Join(FontDir, filepath.Base(path))
 
-		log.Println("extract font:", target)
+		//log.Println("extract font:", target)
 
 		return os.WriteFile(target, data, 0644)
 	})

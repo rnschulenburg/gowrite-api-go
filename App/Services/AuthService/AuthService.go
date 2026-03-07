@@ -17,7 +17,7 @@ import (
 //
 
 const (
-	AccessTokenLifetime  = 1 * time.Minute
+	AccessTokenLifetime  = 15 * time.Minute
 	RefreshTokenLifetime = 30 * 24 * time.Hour
 )
 
